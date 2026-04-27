@@ -19,10 +19,6 @@ on:
         required: false
         type: boolean
         default: false
-      mermaid:
-        required: false
-        type: boolean
-        default: false
 
 jobs:
   pkgdown:
@@ -35,19 +31,19 @@ jobs:
 
     steps:
       - name: 🤖 Generate app token
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
         id: app-token2
         with:
           app-id: ${{ vars.BOT1_APP_ID }}
           private-key: ${{ secrets.BOT1_APP_PRIVATE_KEY }}
       - name: 🚚 Code checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: v${{ inputs.pkg_version }}
           token: ${{ steps.app-token2.outputs.token }} # branch write override
       - name: DVC setup
         if: inputs.dvc == true
-        uses: iterative/setup-dvc@v2
+        uses: iterative/setup-dvc@4bdfd2b0f6f1ad7e08afadb03b1a895c352a5239 # v2.0.0
       - name: DVC pull
         if: inputs.dvc == true
         env:
@@ -59,7 +55,7 @@ jobs:
           dvc pull
           ls -l inst/extdata/*
       - name: 👾 Miniforge setup
-        uses: conda-incubator/setup-miniconda@v3
+        uses: conda-incubator/setup-miniconda@8ee1f361103df19b6f8c8655fd3967a8ecb162d5 # v4.0.1
         with:
           auto-update-conda: true
           environment-file: ${{ inputs.dir_conda_env_yaml }}/pkgdown.yaml
@@ -68,14 +64,6 @@ jobs:
       - name: 📦 Install R pkg from source
         if: inputs.dvc == true
         run: R CMD INSTALL --no-test-load .
-      - name: 🖼️ Install Mermaid CLI
-        if: inputs.mermaid == true
-        run: npm install -g @mermaid-js/mermaid-cli
-      - name: 🎨 Generate schema ER SVGs
-        if: inputs.mermaid == true
-        run: |
-          echo '{"args":["--no-sandbox"]}' > /tmp/puppeteer.json
-          Rscript inst/scripts/gen_er_svgs.R /tmp/puppeteer.json
       - name: 🌐 Website publish
         env:
           APP_ID: ${{ vars.BOT1_APP_ID }}
