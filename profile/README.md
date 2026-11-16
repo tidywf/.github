@@ -7,6 +7,9 @@ Tidying, exploring and visualising bioinformatic workflow outputs
 | [nemo] | Building blocks for parsing, tidying, and writing bioinformatic pipeline results  | [📚 Docs][nemo-docs] | [![conda-latest][nemo-conda-date-badge]][nemo-conda] [![Anaconda][nemo-conda-ver-badge]][nemo-conda] [![gha][nemo-gha-badge]][nemo-gha] |
 | [tidywigits] | Parse and tidy outputs from the WiGiTS (hmftools) suite for cancer genomics | [📚 Docs][tw-docs]   | [![conda-latest][tw-conda-date-badge]][tw-conda] [![Anaconda][tw-conda-ver-badge]][tw-conda] [![gha][tw-gha-badge]][tw-gha] |
 | [tidydragen] | Parse and tidy outputs from Illumina DRAGEN workflows                       | [📚 Docs][td-docs]   | [![conda-latest][td-conda-date-badge]][td-conda] [![Anaconda][td-conda-ver-badge]][td-conda] [![gha][td-gha-badge]][td-gha] |
+| [nemo-image] | Docker image bundling nemo, tidywigits and tidydragen behind one CLI | [📚 README][ni-docs] | [![release][ni-rel-badge]][ni-rel] [![gha][ni-gha-badge]][ni-gha] |
+| [nemo-infra] | AWS infrastructure for running nemo tidy jobs as a container Lambda | [📚 README][nf-docs] | |
+| [actions] | Reusable GitHub Actions workflows shared across tidywf repos | [📚 README][ac-docs] | |
 
 [nemo]: https://github.com/tidywf/nemo
 [nemo-docs]: https://tidywf.github.io/nemo
@@ -31,3 +34,16 @@ Tidying, exploring and visualising bioinformatic workflow outputs
 [td-conda-ver-badge]: https://anaconda.org/tidywf/r-tidydragen/badges/version.svg
 [td-gha]: https://github.com/tidywf/tidydragen/actions/workflows/deploy.yaml
 [td-gha-badge]: https://github.com/tidywf/tidydragen/actions/workflows/deploy.yaml/badge.svg
+
+[nemo-image]: https://github.com/tidywf/nemo-image
+[ni-docs]: https://github.com/tidywf/nemo-image#readme
+[ni-rel]: https://github.com/tidywf/nemo-image/releases/latest
+[ni-rel-badge]: https://img.shields.io/github/v/release/tidywf/nemo-image
+[ni-gha]: https://github.com/tidywf/nemo-image/actions/workflows/deploy.yaml
+[ni-gha-badge]: https://github.com/tidywf/nemo-image/actions/workflows/deploy.yaml/badge.svg
+
+[nemo-infra]: https://github.com/tidywf/nemo-infra
+[nf-docs]: https://github.com/tidywf/nemo-infra#readme
+
+[actions]: https://github.com/tidywf/actions
+[ac-docs]: https://github.com/tidywf/actions#readme
